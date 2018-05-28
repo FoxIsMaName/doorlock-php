@@ -4,8 +4,8 @@
 function send_LINE($msg){
  $access_token = '2FFGevLRjlbzKli1poBDxAVNXrShXytLrBw4sTpG9lGFqQi8ObAqr2gdiMjs99Am8OLFZIYvn/ytIzZoifgk+6HWshJKVgNVg4JlifaklIChp0ENVaMRClEM6KzgkZuwfh+GS0t2kZdu2IJbo1bzmwdB04t89/1O/w1cDnyilFU='; 
 
- $events = json_decode($content, true);
- $text = $event['source']['userId'];
+ $events = json_decode($msg, true);
+ //$text = $event['source']['userId'];
  $replyToken = $event['replyToken'];
   $messages = [
         'type' => 'text',

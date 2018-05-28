@@ -1,12 +1,10 @@
  <?php
   
 
-function send_LINE($msg){
+function send_LINE($msg, $replyToken){
  $access_token = '2FFGevLRjlbzKli1poBDxAVNXrShXytLrBw4sTpG9lGFqQi8ObAqr2gdiMjs99Am8OLFZIYvn/ytIzZoifgk+6HWshJKVgNVg4JlifaklIChp0ENVaMRClEM6KzgkZuwfh+GS0t2kZdu2IJbo1bzmwdB04t89/1O/w1cDnyilFU='; 
 
  $events = json_decode($msg, true);
- //$text = $event['source']['userId'];
- $replyToken = $event['replyToken'];
   $messages = [
         'type' => 'text',
         'text' => $msg
@@ -17,7 +15,7 @@ function send_LINE($msg){
       $data = [
 
         'to' => $replyToken,
-        'messages' => [$messages],
+        'messages' => [$replyToken],
       ];
       $post = json_encode($data);
       $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);

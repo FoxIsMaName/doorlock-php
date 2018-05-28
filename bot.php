@@ -7,10 +7,12 @@ $content = file_get_contents('php://input');
 // Parse JSON
 
 $events = json_decode($content, true);
+
+$replyToken = $event['replyToken'];
 // Validate parsed JSON data
 if (!is_null($events['ESP'])) {
 	
-	send_LINE($events['ESP']);
+	send_LINE($events['ESP'], $replyToken);
 		
 	echo "OK";
 	}

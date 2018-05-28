@@ -6,6 +6,7 @@ function send_LINE($msg){
 
  $events = json_decode($content, true);
  $text = $event['source']['userId'];
+ $replyToken = $event['replyToken'];
   $messages = [
         'type' => 'text',
         'text' => $msg
@@ -15,7 +16,7 @@ function send_LINE($msg){
       $url = 'https://api.line.me/v2/bot/message/push';
       $data = [
 
-        'to' => $text,
+        'to' => $replyToken,
         'messages' => [$messages],
       ];
       $post = json_encode($data);

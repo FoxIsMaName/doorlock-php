@@ -1,27 +1,19 @@
-<?php
- require("pub.php");
- require("line.php");
+<?php // callback.php
+require "vendor/autoload.php";
+require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
+$access_token = '2FFGevLRjlbzKli1poBDxAVNXrShXytLrBw4sTpG9lGFqQi8ObAqr2gdiMjs99Am8OLFZIYvn/ytIzZoifgk+6HWshJKVgNVg4JlifaklIChp0ENVaMRClEM6KzgkZuwfh+GS0t2kZdu2IJbo1bzmwdB04t89/1O/w1cDnyilFU=
+';
 
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
-
 $events = json_decode($content, true);
-
-$replyToken = $event['replyToken'];
 // Validate parsed JSON data
-if (!is_null($events['ESP'])) {
-	
-	send_LINE($events['ESP'], $replyToken);
-		
-	echo "OK";
-	}
 if (!is_null($events['events'])) {
-	echo "line bot";
-	// Loop through each event
-	foreach ($events['events'] as $event) {
-		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+// Loop through each event
+foreach ($events['events'] as $event) {
+// Reply only when message sent is in 'text' format
+if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 // Get text sent
 $text = $event['source']['userId'];
 // Get replyToken
@@ -49,7 +41,6 @@ $result = curl_exec($ch);
 curl_close($ch);
 echo $result . "\r\n";
 }
-	}
 }
-echo "OK3";
-?>
+}
+echo "OK";

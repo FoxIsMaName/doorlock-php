@@ -1,6 +1,4 @@
 <?php // callback.php
-require "vendor/autoload.php";
-require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 $access_token = '2FFGevLRjlbzKli1poBDxAVNXrShXytLrBw4sTpG9lGFqQi8ObAqr2gdiMjs99Am8OLFZIYvn/ytIzZoifgk+6HWshJKVgNVg4JlifaklIChp0ENVaMRClEM6KzgkZuwfh+GS0t2kZdu2IJbo1bzmwdB04t89/1O/w1cDnyilFU=';
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -42,4 +40,3 @@ if (!is_null($events['events'])) {
 	}
 }
 echo "OK";
-?>
